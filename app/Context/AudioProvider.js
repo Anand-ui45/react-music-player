@@ -6,6 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Audio } from "expo-av";
 import { storeAudioForNextOpen } from "../misc/helper";
 import { playNext } from "../misc/audioController";
+import * as NavigationBar from "expo-navigation-bar";
 export const AudioContext = createContext();
 
 export class AudioProvider extends Component {
@@ -167,6 +168,11 @@ export class AudioProvider extends Component {
   };
 
   componentDidMount() {
+    const setNavigationbar = async () => {
+      await NavigationBar.setBackgroundColorAsync("#121212");
+      await NavigationBar.setButtonStyleAsync("light");
+    };
+    setNavigationbar();
     this.getPermission();
     if (this.state.playbackObj === null) {
       this.setState({ ...this.state, playbackObj: new Audio.Sound() });

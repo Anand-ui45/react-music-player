@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, StatusBar } from "react-native";
 import { AudioContext } from "../Context/AudioProvider";
 import { RecyclerListView, LayoutProvider } from "recyclerlistview";
 import AudioListItem from "../components/AudioListItem";
@@ -8,6 +8,7 @@ import OptionModal from "../components/OptionModal";
 
 import { selectAudio } from "../misc/audioController";
 import MiniPlayer from "../components/MiniPlayer";
+import color from "../misc/color";
 
 const { width } = Dimensions.get("window");
 
@@ -79,6 +80,7 @@ class AudioList extends Component {
           if (!dataProvider._data.length) return null;
           return (
             <Screen>
+              <StatusBar backgroundColor={"#000"} barStyle={"light-content"} />
               <RecyclerListView
                 dataProvider={dataProvider}
                 layoutProvider={this.layoutProvider}

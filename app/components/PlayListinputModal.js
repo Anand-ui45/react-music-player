@@ -6,6 +6,7 @@ import {
   TextInput,
   Dimensions,
   TouchableWithoutFeedback,
+  TouchableOpacity,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import color from "../misc/color";
@@ -31,22 +32,17 @@ function PlayListInputModal({ visible, onClose, onSubmit }) {
       </TouchableWithoutFeedback>
       <View style={styles.modalContainer}>
         <View style={styles.inputContainer}>
-          <Text style={{ color: color.ACTIVE_BG, fontSize: 20 }}>
-            Create New Playlist
-          </Text>
+          <Text style={styles.title}>Create New Playlist</Text>
           <TextInput
             style={styles.input}
             placeholder="New playlist"
             value={playListName}
             onChangeText={(text) => setPlayListName(text)}
+            placeholderTextColor={color.ACTIVE_BG}
           />
-          <AntDesign
-            name="check"
-            size={24}
-            color={color.ACTIVE_FONT}
-            style={styles.submitIcon}
-            onPress={handleSubmit} // Use the correct handler
-          />
+          <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
+            <AntDesign name="check" size={24} color="#fff" />
+          </TouchableOpacity>
         </View>
       </View>
     </Modal>
@@ -62,30 +58,53 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   inputContainer: {
-    width: width - 20,
-    height: 200,
-    borderRadius: 10,
-    backgroundColor: color.ACTIVE_FONT,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 15,
-  },
-  input: {
     width: width - 40,
-    borderBottomWidth: 1,
-    borderBottomColor: color.ACTIVE_BG,
-    fontSize: 18,
-    paddingVertical: 5,
+    padding: 20,
+    borderRadius: 20,
+    backgroundColor: color.APP_BG,
+    alignItems: "center",
+
+    shadowColor: color.ACTIVE_BG,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.25,
+    shadowRadius: 10,
+
+    elevation: 10,
+  },
+  title: {
+    color: color.ACTIVE_BG,
+    fontSize: 22,
+    fontWeight: "bold",
     marginBottom: 15,
   },
-  submitIcon: {
-    padding: 10,
-    backgroundColor: color.ACTIVE_BG,
+  input: {
+    width: "100%",
+    borderWidth: 1,
+    borderColor: color.ACTIVE_BG,
     borderRadius: 10,
-    marginTop: 10,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    fontSize: 16,
+    color: color.ACTIVE_FONT,
+    marginBottom: 20,
+  },
+  submitButton: {
+    backgroundColor: color.ACTIVE_BG,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    justifyContent: "center",
+    alignItems: "center",
+
+    shadowColor: color.ACTIVE_BG,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+
+    elevation: 8,
   },
   modalBG: {
-    backgroundColor: color.MODAL_BG,
+    backgroundColor: "#000",
     opacity: 0.5,
   },
 });

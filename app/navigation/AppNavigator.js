@@ -2,6 +2,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import AudioList from "../screens/AudioList";
 import Player from "../screens/Player";
 import PlayList from "../screens/PlayList";
+
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -28,9 +29,13 @@ function AppNavigator() {
       screenOptions={{
         tabBarStyle: {
           height: 60,
+          backgroundColor: color.APP_BG,
         },
         tabBarLabelStyle: {
           fontSize: 12,
+        },
+        tabBarIndicatorStyle: {
+          backgroundColor: color.ACTIVE_BG,
         },
       }}
     >
@@ -45,6 +50,8 @@ function AppNavigator() {
               color={focused ? color.ACTIVE_BG : color.FONT_LIGHT}
             />
           ),
+          tabBarActiveTintColor: color.ACTIVE_BG,
+          tabBarInactiveTintColor: color.FONT_LIGHT,
         }}
       />
       <Tab.Screen
@@ -58,6 +65,8 @@ function AppNavigator() {
               color={focused ? color.ACTIVE_BG : color.FONT_LIGHT}
             />
           ),
+          tabBarActiveTintColor: color.ACTIVE_BG,
+          tabBarInactiveTintColor: color.FONT_LIGHT,
         }}
       />
       <Tab.Screen
@@ -71,6 +80,8 @@ function AppNavigator() {
               color={focused ? color.ACTIVE_BG : color.FONT_LIGHT}
             />
           ),
+          tabBarActiveTintColor: color.ACTIVE_BG,
+          tabBarInactiveTintColor: color.FONT_LIGHT,
         }}
       />
     </Tab.Navigator>

@@ -6,10 +6,13 @@ export const play = async (playbackObj, uri, lastPosition) => {
     if (!lastPosition) {
       return await playbackObj.loadAsync(
         { uri },
-        { shouldPlay: true, progressUpdateIntevalMillis: 1000 }
+        { shouldPlay: true, progressUpdateIntervalMillis: 1000 }
       );
     }
-    await playbackObj.loadAsync({ uri }, { progressUpdateIntevalMillis: 1000 });
+    await playbackObj.loadAsync(
+      { uri },
+      { progressUpdateIntervalMillis: 1000 }
+    );
     return await playbackObj.playFromPositionAsync(lastPosition);
   } catch (err) {
     console.log("error inside play helper method", err.message);
@@ -39,7 +42,7 @@ export const resume = async (playbackObj) => {
 //select another audio
 export const playNext = async (playbackObj, uri) => {
   try {
-    await playbackObj.stopAsync();
+    // await playbackObj.stopAsync();
     await playbackObj.unloadAsync();
     return await play(playbackObj, uri);
   } catch (err) {

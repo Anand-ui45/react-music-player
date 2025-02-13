@@ -6,6 +6,7 @@ import Slider from "@react-native-community/slider";
 import PlayerButton from "../components/PlayerButton";
 import { useContext, useEffect, useState } from "react";
 import { AudioContext } from "./../Context/AudioProvider";
+
 import {
   changeAudio,
   moveAudio,
@@ -59,8 +60,12 @@ function Player() {
           <View style={{ flexDirection: "row" }}>
             {context.isPlayListRunning && (
               <>
-                <Text style={{ fontWeight: "bold" }}>From Playlist:</Text>
-                <Text>{context.activePlayList.title}</Text>
+                <Text style={{ fontWeight: "bold", color: color.FONT_LIGHT }}>
+                  From Playlist:
+                </Text>
+                <Text style={{ color: color.ACTIVE_BG }}>
+                  {context.activePlayList.title}
+                </Text>
               </>
             )}
           </View>
@@ -86,14 +91,16 @@ function Player() {
               paddingHorizontal: 15,
             }}
           >
-            <Text>
+            <Text style={{ color: color.FONT_LIGHT }}>
               {currentPosition
                 ? currentPosition
                 : renderCrtTime()
                 ? renderCrtTime()
                 : "00:00"}
             </Text>
-            <Text>{convertTime(context.currentAudio.duration)} </Text>
+            <Text style={{ color: color.FONT_LIGHT }}>
+              {convertTime(context.currentAudio.duration)}{" "}
+            </Text>
           </View>
           <Slider
             style={{ width: width, height: 40 }}

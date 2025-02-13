@@ -129,7 +129,7 @@ function PlayListDetails(props) {
             <Ionicons
               name="chevron-back-outline"
               size={28}
-              colo="rgb(46, 46, 46, 0.89)"
+              color={color.FONT_LIGHT}
               style={{ marginTop: 5 }}
               onPress={() => props.navigation.goBack()}
             />
