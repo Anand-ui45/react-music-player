@@ -72,3 +72,11 @@ Contributions are welcome!
 Anand
 GitHub: Anand-ui45
 Email: ananddevi464@gamil.com
+
+## 📛 Note
+
+- prebuild is not updated you can prebuild the android folder using:
+
+```bash
+npx expo prebuild
+```
